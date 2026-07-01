@@ -16,7 +16,7 @@ public class CreateTaskUseCase {
 
     public CreateTaskOutputDTO execute(CreateTaskInputDTO input) {
         var task = new Task(input.title(), input.description());
-
-        return CreateTaskOutputDTO.from(task);
+        var savedTask = repository.save(task);
+        return CreateTaskOutputDTO.from(savedTask);
     }
 }
